@@ -2,8 +2,13 @@
   <div class="col-sm-2" *ngFor="let photo of photos">
      <img src="{{photo.url}}" class="img-thumbnail p-1" alt="">
      <div class="text-center">
-      <button type="button" class="btn btn-sm">Main</button>
-      <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button>
+      <button type="button" class="btn btn-sm mr-1" 
+      (click)="setMainPhoto(photo)" 
+      [ngClass]="photo.isMain ? 'btn-success active' : 'btn-secondary'"
+      [disabled]="photo.isMain">Main</button>
+      <button type="button" class="btn btn-sm btn-danger"
+      (click)="deletePhoto(photo.id)"
+      [disabled]="photo.isMain"><i class="fa fa-trash-o"></i></button>
      </div>
   </div>
 </div>
@@ -58,7 +63,7 @@
             </div>
             <button type="button" class="btn btn-success btn-s"
                     (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-                <span class="fa fa-upload"></span> Upload all
+                <span class="fa fa-upload"></span> Upload
             </button>
             <button type="button" class="btn btn-warning btn-s"
                     (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
