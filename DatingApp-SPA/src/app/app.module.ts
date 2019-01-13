@@ -5,7 +5,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { NavComponent } from './nav/nav.component';
@@ -14,7 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AlertifyService } from './_services/alertify.service';
-import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, BsDatepickerModule } from 'ngx-bootstrap';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -54,10 +54,12 @@ export function tokenGetter() {
       BrowserModule,
       HttpClientModule,
       FormsModule,
+      ReactiveFormsModule,
       BsDropdownModule.forRoot(),
       TabsModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       NgxGalleryModule,
+      BsDatepickerModule.forRoot(),
       FileUploadModule,
       JwtModule.forRoot({
          config: {
